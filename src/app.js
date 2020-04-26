@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 
-// const { uuid } = require("uuidv4");
+const { uuid } = require("uuidv4");
 
 const app = express();
 
@@ -11,7 +11,9 @@ app.use(cors());
 const repositories = [];
 
 app.get("/repositories", (request, response) => {
-  // TODO
+  repositories.length > 0
+    ? response.json(repositories)
+    : response.json({ message: "Não existem repositórios cadastrados" });
 });
 
 app.post("/repositories", (request, response) => {
